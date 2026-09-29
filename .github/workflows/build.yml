@@ -1,0 +1,25 @@
+name: Build SMCAMDProcessor
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build:
+    runs-on: macos-13
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Build All Targets
+        run: |
+          xcodebuild -scheme AMDRyzenCPUPowerManagement -configuration Release -derivedDataPath build CODE_SIGNING_ALLOWED=NO
+          xcodebuild -scheme SMCAMDProcessor -configuration Release -derivedDataPath build CODE_SIGNING_ALLOWED=NO
+          xcodebuild -scheme "AMD Power Gadget" -configuration Release -derivedDataPath build CODE_SIGNING_ALLOWED=NO
+
+      - name: Upload Output Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: SMCAMD-Release-Files
+          path: build/Build/Products/Release/
