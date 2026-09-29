@@ -19,13 +19,17 @@ jobs:
           # Tải Lilu SDK
           git clone https://github.com/acidanthera/Lilu.git lilu_repo
           cp -R lilu_repo/Lilu/Headers/* ./Headers/
+          
+          # Tải VirtualSMC SDK
+          git clone https://github.com/acidanthera/VirtualSMC.git vsmc_repo
+          cp -R vsmc_repo/VirtualSMCSDK ./
+          cp -R vsmc_repo/VirtualSMCSDK/* ./Headers/
+          
+          # Tải kext biên dịch sẵn 
           curl -sL -o Lilu.zip https://github.com/acidanthera/Lilu/releases/download/1.6.7/Lilu-1.6.7-DEBUG.zip
           unzip -q Lilu.zip -d Lilu_kext
           cp -R Lilu_kext/Lilu.kext .
           
-          # Tải VirtualSMC SDK
-          git clone https://github.com/acidanthera/VirtualSMC.git vsmc_repo
-          cp -R vsmc_repo/VirtualSMC/Headers/* ./Headers/
           curl -sL -o VirtualSMC.zip https://github.com/acidanthera/VirtualSMC/releases/download/1.3.2/VirtualSMC-1.3.2-DEBUG.zip
           unzip -q VirtualSMC.zip -d Vsmc_kext
           cp -R Vsmc_kext/Kexts/VirtualSMC.kext .
