@@ -14,11 +14,11 @@ jobs:
 
       - name: Download Lilu SDK & Headers
         run: |
-          # Tải mã nguồn Lilu để lấy thư mục Headers
-          git clone https://github.com/acidanthera/Lilu.git ../Lilu
-          cp -R ../Lilu/Headers ./Headers
+          # Đổi tên thư mục clone thành lilu_repo và copy chính xác từ lilu_repo/Lilu/Headers
+          git clone https://github.com/acidanthera/Lilu.git lilu_repo
+          cp -R lilu_repo/Lilu/Headers ./Headers
           
-          # Tải Lilu.kext biên dịch sẵn phòng trường hợp trình liên kết (Linker) cần
+          # Tải Lilu.kext biên dịch sẵn 
           curl -sL -o Lilu.zip https://github.com/acidanthera/Lilu/releases/download/1.6.7/Lilu-1.6.7-DEBUG.zip
           unzip -q Lilu.zip -d Lilu_kext
           cp -R Lilu_kext/Lilu.kext .
