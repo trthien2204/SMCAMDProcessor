@@ -14,9 +14,9 @@ jobs:
 
       - name: Build All Targets
         run: |
-          xcodebuild -scheme AMDRyzenCPUPowerManagement -configuration Release -derivedDataPath build CODE_SIGNING_ALLOWED=NO
-          xcodebuild -scheme SMCAMDProcessor -configuration Release -derivedDataPath build CODE_SIGNING_ALLOWED=NO
-          xcodebuild -scheme "AMD Power Gadget" -configuration Release -derivedDataPath build CODE_SIGNING_ALLOWED=NO
+          xcodebuild -scheme AMDRyzenCPUPowerManagement -configuration Release -derivedDataPath build CODE_SIGNING_ALLOWED=NO ARCHS=x86_64
+          xcodebuild -scheme SMCAMDProcessor -configuration Release -derivedDataPath build CODE_SIGNING_ALLOWED=NO ARCHS=x86_64
+          xcodebuild -scheme "AMD Power Gadget" -configuration Release -derivedDataPath build CODE_SIGNING_ALLOWED=NO ARCHS=x86_64
 
       - name: Upload Output Artifacts
         uses: actions/upload-artifact@v4
